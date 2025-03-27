@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Category from "../../categories.json";
 
-import Produits from "../compenents/Produit";
+
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 const Menu = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [nameCategory, setnameCategory] = useState("menus");
+  const [nameCategory, setnameCategory] = useState();
   
   
 
@@ -31,10 +30,11 @@ const Menu = () => {
     <p>Chargement ...</p>
   ) : (
     <>
+    <div className="product-select">
       <p className="title">Menu</p>
 
       <div className="menu-nav">
-        {Category.map((element, index) => {
+        {data.map((element, index) => {
           {
             /* console.log(element); */
           }
@@ -57,7 +57,7 @@ const Menu = () => {
       </div>
       
       <Produits nameCategory = {nameCategory} setnameCategory ={setnameCategory} />
-      
+      </div>
     </>
   );
 };
